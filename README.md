@@ -1,1 +1,3 @@
-# shahroq.github.io
+# shahroq.dev
+
+Personal Blog

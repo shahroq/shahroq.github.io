@@ -1,0 +1,137 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* layers */
+/*
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+*/
+
+/* apply Tailwind's 'dark:' selector for specific themes */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --color-white: #fff;
+  --color-vanilla: #fdf0ec;
+  --color-navy: #314964;
+
+  /* --font-display: cursive; */
+  --text-base: 1.125rem;
+}
+
+/* tailwind: change a styles globally */
+@layer base {
+  /* general */
+  a {
+    @apply hover:underline hover:underline-offset-4;
+  }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+
+  small {
+    @apply text-sm font-light;
+  }
+
+  /* navbar */
+  .navbar-custom {
+    padding: 0.5rem 0 !important;
+  }
+  .navbar-custom a {
+    @apply text-lg! font-medium hover:no-underline hover:opacity-70 transition-opacity duration-300 hover:bg-transparent!;
+  }
+  .navbar-custom a.active {
+    @apply opacity-70;
+  }
+
+  .navbar-custom .navbar-start {
+    width: 75% !important;
+  }
+}
+
+/* --------- DAISYUI ----------- */
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+/* customie theme used in this project */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+}
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  --color-neutral: oklch(92% 0.004 286.32);
+  --color-neutral-content: oklch(14% 0.005 285.823);
+}
+
+/* daisyui: change btn primary globally */
+@utility btn {
+  @apply rounded-none px-7 py-7 text-lg shadow-none border-0;
+}
+
+@utility card {
+  @apply mb-8;
+
+  h2 {
+    @apply text-xl font-semibold;
+  }
+  p {
+    @apply text-lg;
+  }
+}
+
+/* daisyui: custom styles for a specific theme */
+[data-theme="light"] {
+  .header-border-color,
+  .footer-border-color {
+    @apply border-gray-200;
+    /* @apply border-vanilla; */
+  }
+
+  #page-title {
+    background-color: var(--color-vanilla);
+  }
+
+  footer #copyright {
+    @apply leading-none;
+  }
+  footer #copyright > * {
+    @apply leading-none;
+  }
+}
+
+[data-theme="dark"] {
+  .header-border-color,
+  .footer-border-color {
+    @apply border-gray-600;
+  }
+  #page-title {
+    background-color: #374151;
+  }
+}
+
+.bg-preview0 {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #eee,
+    #eee 20px,
+    #fff 20px,
+    #fff 40px
+  );
+}
+
+.border-preview0 {
+  @apply border border-dashed border-gray-500/70;
+}

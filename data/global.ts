@@ -21,7 +21,7 @@ export const socials: LinkItem[] = [
   },
   {
     label: "Concrete CMS",
-    url: "community.concretecms.com/members/profile/102973",
+    url: "http://community.concretecms.com/members/profile/102973",
     icon: "FaHandPaper",
   },
 ];

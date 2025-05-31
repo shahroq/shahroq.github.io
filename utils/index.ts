@@ -52,17 +52,6 @@ export const readFileContent = (filePath: string): string => {
   return content;
 };
 
-export const sortByDate = <T extends { published_date: Date }>(
-  a: T,
-  b: T
-): number => {
-  return b.published_date.getTime() - a.published_date.getTime();
-};
-
-export const sortByID = <T extends { id: number }>(a: T, b: T): number => {
-  return b.id - a.id;
-};
-
 export function formatDate(published_date: string | Date): string {
   if (!published_date) throw new Error("Date not available");
 

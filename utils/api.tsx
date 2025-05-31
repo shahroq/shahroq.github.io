@@ -1,13 +1,9 @@
 import path from "path";
+import _ from "lodash";
 import matter from "gray-matter";
 import Post from "@/interfaces/Post";
 import Project from "@/interfaces/Project";
-import {
-  getFilesInFolder,
-  readFileContent,
-  sortByDate,
-  sortByID,
-} from "@/utils";
+import { getFilesInFolder, readFileContent } from "@/utils";
 
 export const getPosts = async (): Promise<Post[]> => {
   const postDir = path.join("data", "posts");
@@ -35,11 +31,9 @@ export const getPosts = async (): Promise<Post[]> => {
     } as Post;
   });
 
-  // filter hidden posts
+  // filter, sort
   posts = posts.filter((post) => !post.hidden);
-
-  // sort posts desc by date
-  posts.sort(sortByDate);
+  posts = _.orderBy(posts, ["publishDate", "id"], ["desc", "desc"]);
 
   return posts;
 };
@@ -71,11 +65,8 @@ export const getProjects = async function (): Promise<Project[]> {
     } as Project;
   });
 
-  // filter hidden projects
   projects = projects.filter((project) => !project.hidden);
-
-  // sort projects desc by date
-  projects.sort(sortByID);
+  projects = _.orderBy(projects, ["id"], ["desc"]);
 
   return projects;
 };

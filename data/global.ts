@@ -1,6 +1,7 @@
 import LinkItem from "@/interfaces/LinkItem";
 
 export const siteName = "Shahroq.dev";
+export const siteVersion = "1.1.0";
 export const siteRepoLink = "https://github.com/shahroq/shahroq.github.io";
 
 export const socials: LinkItem[] = [

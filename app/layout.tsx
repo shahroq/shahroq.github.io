@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import { siteName } from "@/data/global";
+import { siteName, siteVersion } from "@/data/global";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en" data-theme="light" data-version={siteVersion}>
       <body className={`${inter.variable} antialiased text-base`}>
         <Header />
         <main>{children}</main>

@@ -1,4 +1,3 @@
-import fs from "fs";
 import path from "path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -7,7 +6,7 @@ import { marked } from "marked";
 import Post from "@/interfaces/Post";
 import Container from "@/app/Container";
 import Tags from "@/components/Tags";
-import { formatDate } from "@/utils";
+import { formatDate, getFilesInFolder, readFileContent } from "@/utils";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -58,7 +57,7 @@ export default async function PostPage({ params }: Props) {
 async function getPost(slug: string): Promise<Post> {
   const postPath = path.join("data", "posts", slug + ".md");
 
-  const fileContent = fs.readFileSync(postPath, "utf-8");
+  const fileContent = readFileContent(postPath);
 
   const post = matter(fileContent);
 
@@ -70,12 +69,7 @@ async function getPost(slug: string): Promise<Post> {
 
 export async function generateStaticParams() {
   const postDir = path.join("data", "posts");
-
-  const files = fs.readdirSync(postDir).filter((name) => {
-    return (
-      fs.statSync(path.join(postDir, name)).isFile() && name.endsWith(".md")
-    );
-  });
+  const files = getFilesInFolder(postDir, [".md"]);
 
   const posts = files.map((filename) => {
     const slug = filename.replace(".md", "");

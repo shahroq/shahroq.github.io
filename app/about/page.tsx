@@ -1,10 +1,10 @@
-import fs from "fs";
 import path from "path";
 import Page from "@/interfaces/Page";
 import { notFound } from "next/navigation";
 import matter from "gray-matter";
 import { parseMdMarked } from "@/utils/markdown";
 import Container from "../Container";
+import { readFileContent } from "@/utils";
 
 export default async function AboutPage() {
   const page = await getPage("about");
@@ -24,8 +24,7 @@ export default async function AboutPage() {
 
 async function getPage(slug: string): Promise<Page> {
   const pagePath = path.join("data", slug + ".md");
-
-  const fileContent = fs.readFileSync(pagePath, "utf-8");
+  const fileContent = readFileContent(pagePath);
 
   const page = matter(fileContent);
 

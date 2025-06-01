@@ -17,6 +17,7 @@ links:
       icon: "FaHandPaper",
     },
   ]
+priority: 40
 ---
 
 The Whale Nestable Manual Nav provides an enhanced navigation solution for Concrete CMS, allowing designers and developers to create custom navigation menus with ease. This add-on is perfect for those who require detailed control over their site's navigation structure, offering the ability to manually select, order, and nest page links according to specific design and usability requirements.

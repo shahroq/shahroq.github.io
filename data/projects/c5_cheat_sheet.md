@@ -12,6 +12,7 @@ links:
       icon: "FaGithub",
     },
   ]
+priority: 10
 ---
 
 This is a collection of ConcreteCMS cheat sheets, based on the V9+ source code.

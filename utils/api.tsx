@@ -60,13 +60,14 @@ export const getProjects = async function (): Promise<Project[]> {
       description: data.description ?? "",
       image: data.image ?? null,
       links: data.links ?? [],
+      priority: data.priority ?? 1000,
       hidden: !!data.hidden,
       body: data.body ?? "",
     } as Project;
   });
 
   projects = projects.filter((project) => !project.hidden);
-  projects = _.orderBy(projects, ["id"], ["desc"]);
+  projects = _.orderBy(projects, ["priority", "id"], ["asc", "desc"]);
 
   return projects;
 };

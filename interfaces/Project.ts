@@ -21,6 +21,7 @@ export default interface Project {
   description: string;
   image: string | null;
   links: LinkItem[];
+  priority: number;
   hidden: boolean;
 
   // md body

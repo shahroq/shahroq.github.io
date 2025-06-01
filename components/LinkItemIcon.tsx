@@ -19,18 +19,33 @@ const LinkItemIcon = ({
   const linkClassesString = linkClasses.join(" ");
   const iconClassesString = iconClasses.join(" ");
 
-  return (
+  const iconElement = (
+    <IconComponent
+      className={`transition-colors ${
+        linkItem.url ? "hover:text-gray-700 dark:hover:text-gray-200" : ""
+      } ${iconClassesString}`}
+    />
+  );
+
+  return linkItem.url ? (
     <Link
-      href={linkItem.url ? linkItem.url : "#"}
+      href={linkItem.url}
       title={linkItem.label}
       key={linkItem.label}
-      className={`${linkClassesString}`}
+      className={linkClassesString}
       target="_blank"
     >
-      <IconComponent
-        className={`hover:text-gray-700 dark:hover:text-gray-200 transition-colors ${iconClassesString}`}
-      />
+      {iconElement}
     </Link>
+  ) : (
+    <span
+      title={linkItem.label}
+      key={linkItem.label}
+      className={`${linkClassesString} cursor-not-allowed text-gray-400`}
+      aria-disabled="true"
+    >
+      {iconElement}
+    </span>
   );
 };
 

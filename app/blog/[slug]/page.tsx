@@ -1,13 +1,11 @@
-import path from "path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import matter from "gray-matter";
 import { marked } from "marked";
-import Post from "@/interfaces/Post";
 import Container from "@/app/Container";
 import Tags from "@/components/Tags";
-import { formatDate, getFilesInFolder, readFileContent } from "@/utils";
+import { formatDate } from "@/utils";
+import { getPost, getPosts } from "@/utils/api";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -55,27 +53,8 @@ export default async function PostPage({ params }: Props) {
   );
 }
 
-async function getPost(slug: string): Promise<Post> {
-  const postPath = path.join("data", "posts", slug + ".md");
-
-  const fileContent = readFileContent(postPath);
-
-  const post = matter(fileContent);
-
-  return {
-    ...post.data,
-    body: post.content,
-  } as Post;
-}
-
 export async function generateStaticParams() {
-  const postDir = path.join("data", "posts");
-  const files = getFilesInFolder(postDir, [".md"]);
-
-  const posts = files.map((filename) => {
-    const slug = filename.replace(".md", "");
-    return { slug };
-  });
+  const posts = await getPosts();
 
   return posts.map((post) => ({
     slug: post.slug,

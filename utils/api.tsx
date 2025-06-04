@@ -71,3 +71,16 @@ export const getProjects = async function (): Promise<Project[]> {
 
   return projects;
 };
+
+export const getPost = async function (slug: string): Promise<Post> {
+  const postPath = path.join("data", "posts", slug + ".md");
+
+  const fileContent = readFileContent(postPath);
+
+  const post = matter(fileContent);
+
+  return {
+    ...post.data,
+    body: post.content,
+  } as Post;
+};

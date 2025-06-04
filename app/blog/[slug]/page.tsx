@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { marked } from "marked";
 import Container from "@/app/Container";
 import Tags from "@/components/Tags";
 import { formatDate } from "@/lib/utils";
 import { getPost, getPosts } from "@/lib/data";
+import { parseMdWithMarked } from "@/lib/markdown";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -15,8 +15,8 @@ export default async function PostPage({ params }: Props) {
   const { slug } = await params;
 
   const post = await getPost(slug);
-
   if (!post) return notFound();
+  const html = parseMdWithMarked(post.body);
 
   return (
     <>
@@ -35,7 +35,7 @@ export default async function PostPage({ params }: Props) {
       <Container classNames={["my-12", "prose lg:prose-lg"]} tag="article">
         <div
           className="post-body"
-          dangerouslySetInnerHTML={{ __html: marked(post.body) }}
+          dangerouslySetInnerHTML={{ __html: html }}
         ></div>
 
         <div className="post-footer">

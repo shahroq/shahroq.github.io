@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import Post from "@/interfaces/Post";
 import Project from "@/interfaces/Project";
 import { getFilesInFolder, readFileContent } from "@/lib/utils";
+import Page from "@/interfaces/Page";
 
 export const getPosts = async (): Promise<Post[]> => {
   const postDir = path.join("data", "posts");
@@ -83,4 +84,16 @@ export const getPost = async function (slug: string): Promise<Post> {
     ...post.data,
     body: post.content,
   } as Post;
+};
+
+export const getPage = async function (slug: string): Promise<Page> {
+  const pagePath = path.join("data", slug + ".md");
+  const fileContent = readFileContent(pagePath);
+
+  const page = matter(fileContent);
+
+  return {
+    ...page.data,
+    body: page.content,
+  } as Page;
 };

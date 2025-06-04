@@ -1,16 +1,13 @@
-import path from "path";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Page from "@/interfaces/Page";
-import matter from "gray-matter";
-import { parseMdMarked } from "@/lib/markdown";
+import { parseMdWithMarked } from "@/lib/markdown";
 import Container from "../Container";
-import { readFileContent } from "@/lib/utils";
+import { getPage } from "@/lib/data";
 
 export default async function AboutPage() {
   const page = await getPage("about");
   if (!page) return notFound();
-  const html = parseMdMarked(page.body);
+  const html = parseMdWithMarked(page.body);
 
   return (
     <Container classNames={["my-12", "prose lg:prose-lg"]}>
@@ -21,18 +18,6 @@ export default async function AboutPage() {
       ></div>
     </Container>
   );
-}
-
-async function getPage(slug: string): Promise<Page> {
-  const pagePath = path.join("data", slug + ".md");
-  const fileContent = readFileContent(pagePath);
-
-  const page = matter(fileContent);
-
-  return {
-    ...page.data,
-    body: page.content,
-  } as Page;
 }
 
 export const metadata: Metadata = {

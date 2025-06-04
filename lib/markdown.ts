@@ -1,6 +1,7 @@
 import { marked } from "marked";
 
-export const parseMdMarked = (body: string) => {
+// todo: abstraction
+export const parseMdWithMarked = (body: string) => {
   const html = marked(body);
   return html;
 };

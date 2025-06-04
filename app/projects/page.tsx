@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Container from "../Container";
 import ProjectList from "@/components/ProjectList";
 import { getProjects } from "@/utils/api";
@@ -12,3 +13,8 @@ export default async function BlogPage() {
     </Container>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Projects",
+};

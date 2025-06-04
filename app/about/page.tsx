@@ -5,6 +5,8 @@ import matter from "gray-matter";
 import { parseMdMarked } from "@/utils/markdown";
 import Container from "../Container";
 import { readFileContent } from "@/utils";
+import { siteName } from "@/data/global";
+import { Metadata } from "next";
 
 export default async function AboutPage() {
   const page = await getPage("about");
@@ -33,3 +35,8 @@ async function getPage(slug: string): Promise<Page> {
     body: page.content,
   } as Page;
 }
+
+export const metadata: Metadata = {
+  title: "About",
+  description: `${siteName} Personal Blog`,
+};

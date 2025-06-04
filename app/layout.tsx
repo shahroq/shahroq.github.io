@@ -13,7 +13,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: siteName,
+  title: {
+    template: `%s | ${siteName}`,
+    default: siteName,
+  },
   description: `${siteName} Personal Blog`,
 };
 

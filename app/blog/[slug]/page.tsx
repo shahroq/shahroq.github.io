@@ -1,6 +1,7 @@
 import path from "path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import matter from "gray-matter";
 import { marked } from "marked";
 import Post from "@/interfaces/Post";
@@ -79,4 +80,14 @@ export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = (await params).slug;
+  const post = await getPost(slug);
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+  };
 }

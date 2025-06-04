@@ -4,8 +4,8 @@ import { Metadata } from "next";
 import { marked } from "marked";
 import Container from "@/app/Container";
 import Tags from "@/components/Tags";
-import { formatDate } from "@/utils";
-import { getPost, getPosts } from "@/utils/api";
+import { formatDate } from "@/lib/utils";
+import { getPost, getPosts } from "@/lib/data";
 
 interface Props {
   params: Promise<{ slug: string }>;

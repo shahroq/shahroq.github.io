@@ -3,7 +3,7 @@ import _ from "lodash";
 import matter from "gray-matter";
 import Post from "@/interfaces/Post";
 import Project from "@/interfaces/Project";
-import { getFilesInFolder, readFileContent } from "@/utils";
+import { getFilesInFolder, readFileContent } from "@/lib/utils";
 
 export const getPosts = async (): Promise<Post[]> => {
   const postDir = path.join("data", "posts");

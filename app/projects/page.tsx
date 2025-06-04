@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Container from "../Container";
 import ProjectList from "@/components/ProjectList";
-import { getProjects } from "@/utils/api";
+import { getProjects } from "@/lib/data";
 
 export default async function BlogPage() {
   const projects = await getProjects();

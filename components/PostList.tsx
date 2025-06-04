@@ -1,5 +1,5 @@
 import Post from "@/interfaces/Post";
-import { formatDate } from "@/utils";
+import { formatDate } from "@/lib/utils";
 import React from "react";
 import Tags from "./Tags";
 import Link from "next/link";

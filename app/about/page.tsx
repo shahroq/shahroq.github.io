@@ -1,12 +1,11 @@
 import path from "path";
-import Page from "@/interfaces/Page";
-import { notFound } from "next/navigation";
-import matter from "gray-matter";
-import { parseMdMarked } from "@/utils/markdown";
-import Container from "../Container";
-import { readFileContent } from "@/utils";
-import { siteName } from "@/data/global";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Page from "@/interfaces/Page";
+import matter from "gray-matter";
+import { parseMdMarked } from "@/lib/markdown";
+import Container from "../Container";
+import { readFileContent } from "@/lib/utils";
 
 export default async function AboutPage() {
   const page = await getPage("about");
@@ -38,5 +37,4 @@ async function getPage(slug: string): Promise<Page> {
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${siteName} Personal Blog`,
 };

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Container from "../Container";
 import PostList from "@/components/PostList";
-import { getPosts } from "@/utils/api";
+import { getPosts } from "@/lib/data";
 
 export default async function BlogPage() {
   const posts = await getPosts();

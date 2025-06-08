@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { FaSquareFull, FaBars, FaTimes } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { siteName } from "@/data/global";
+import { useState } from "react";
 
 const links = [
   { label: "About", href: "/about" },
@@ -13,6 +15,8 @@ const links = [
 ];
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const currentPath = usePathname();
 
   const renderedLinks = links.map(({ label, href }) => (
@@ -24,49 +28,42 @@ const Navbar = () => {
   ));
 
   return (
-    <div className="navbar navbar-custom">
-      <div className="navbar-start flex items-center">
-        {/* mobile menu */}
-        <div className="dropdown">
-          <div
-            tabIndex={0}
-            role="button"
-            className="mr-3 lg:hidden rounded-none"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            {renderedLinks}
-          </ul>
-        </div>
-
-        <p className="btn- btn-ghost- text-2xl font-bold">{siteName}</p>
-
-        <ul className="menu menu-horizontal px-1 hidden lg:flex">
-          {renderedLinks}
-        </ul>
+    <nav className="navbar-main navbar-custom flex space-x-6 h-14 items-center max-md:justify-between">
+      {/* Hamburger Button */}
+      <div className="flex items-center md:hidden">
+        <button
+          id="menu-btn"
+          className="text-gray-700 focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
-      <div className="navbar-end">
+
+      {/* Mobile Menu */}
+      <ul
+        id="mobile-menu"
+        className={`md:hidden px-4 pb-4 mr-0 absolute left-7 top-14 bg-white shadow-md rounded-b-md z-50 ${
+          isOpen ? "" : "hidden"
+        }`}
+      >
+        {renderedLinks}
+      </ul>
+
+      {/* Logo */}
+      <div className="text-2xl font-bold flex space-x-2 items-center">
+        <FaSquareFull className="text-sm" />
+        <p>{siteName}</p>
+      </div>
+
+      {/* Links */}
+      <ul className="hidden md:flex space-x-6">{renderedLinks}</ul>
+
+      {/* Theme Switcher */}
+      <div className="md:ml-auto">
         <ThemeSwitcher />
       </div>
-    </div>
+    </nav>
   );
 };
 

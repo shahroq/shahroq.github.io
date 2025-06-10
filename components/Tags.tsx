@@ -4,12 +4,12 @@ type Props = {
 
 const Tags = ({ tags }: Props) => {
   return (
-    <section className="flex gap-2 mt-3">
+    <section className="flex gap-2">
       {tags.map((tag, index) => {
         return (
-          <div key={index} className="badge badge-outline m-r-5">
+          <span key={index} className="badge badge-outline">
             {tag}
-          </div>
+          </span>
         );
       })}
     </section>

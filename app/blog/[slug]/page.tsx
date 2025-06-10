@@ -20,7 +20,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <>
-      <section id="page-title">
+      <section className="page-title">
         <Container
           classNames={[
             "flex flex-col items-center justify-center text-center lg:px-16 py-12 lg:py-24",
@@ -32,7 +32,10 @@ export default async function PostPage({ params }: Props) {
         </Container>
       </section>
 
-      <Container classNames={["my-12", "prose lg:prose-lg"]} tag="article">
+      <Container
+        classNames={["my-12", "prose lg:prose-lg dark:prose-invert"]}
+        tag="article"
+      >
         <div
           className="post-body"
           dangerouslySetInnerHTML={{ __html: html }}

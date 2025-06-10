@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="flex items-center md:hidden">
         <button
           id="menu-btn"
-          className="text-gray-700 focus:outline-none"
+          className="text-gray-700 dark:text-gray-200 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -43,7 +43,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <ul
         id="mobile-menu"
-        className={`md:hidden px-4 pb-4 mr-0 absolute left-7 top-14 bg-white shadow-md rounded-b-md z-50 ${
+        className={`md:hidden px-4 py-4 mr-0 absolute left-5 top-10 bg-white dark:bg-gray-600 shadow-md rounded-md z-50 ${
           isOpen ? "" : "hidden"
         }`}
       >

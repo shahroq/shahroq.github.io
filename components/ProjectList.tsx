@@ -7,26 +7,26 @@ interface Props {
 
 const ProjectList = ({ projects }: Props) => {
   return (
-    <ul className="space-y-4">
+    <ul className="">
       {projects.map(({ id, categories, title, description, links }) => {
         // const projectUrl = `/projects/${slug}`;
 
         return (
-          <li key={id} className="card bg-base-100 w-full shadow-sm">
+          <li key={id} className="card">
             <div className="card-body">
-              <div className="card-badges flex gap-2 flex-row-reverse">
+              <div className="flex gap-2 flex-row-reverse">
                 {categories.map((category, i) => {
                   return (
-                    <div key={i} className="badge badge-neutral">
+                    <span key={i} className="badge badge-neutral">
                       {category}
-                    </div>
+                    </span>
                   );
                 })}
               </div>
 
-              <h2 className="card-title">{title}</h2>
+              <h2>{title}</h2>
               <p>{description}</p>
-              <div className="card-actions">
+              <div className="flex gap-2">
                 {links.map((link, i) => {
                   return (
                     <LinkItemIcon

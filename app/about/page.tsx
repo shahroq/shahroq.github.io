@@ -10,7 +10,7 @@ export default async function AboutPage() {
   const html = parseMdWithMarked(page.body);
 
   return (
-    <Container classNames={["my-12", "prose lg:prose-lg"]}>
+    <Container classNames={["my-12", "prose lg:prose-lg dark:prose-invert"]}>
       <h1>{page.title}</h1>
       <div
         className="page-body"

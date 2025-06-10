@@ -9,7 +9,7 @@ function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-preview-">
           <div id="copyright">
             <h2>{siteName}</h2>
-            <small className="-bg-green-200">
+            <small>
               Made with Next.js. Contribute to this blog at{" "}
               <a target="_blank" href={siteRepoLink}>
                 GitHub

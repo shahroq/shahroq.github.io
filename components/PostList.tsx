@@ -15,20 +15,17 @@ const PostList = ({ posts }: Props) => {
         const postUrl = `/blog/${slug}`;
 
         return (
-          <li key={id} className="card bg-base-100 w-full shadow-sm">
+          <li key={id} className="card">
             <div className="card-body">
-              <h2 className="card-title">
+              <h2>
                 <Link href={postUrl}>{title}</Link>
               </h2>
               <p>{excerpt}</p>
               {published_date && <small>{formatDate(published_date)}</small>}
 
-              {tags && (
-                <div className="card-actions justify-start">
-                  <Tags tags={tags} />
-                </div>
-              )}
-              <div className="card-actions justify-end">
+              {tags && <Tags tags={tags} />}
+
+              <div className="flex justify-end">
                 <Link href={postUrl} className="btn btn-neutral">
                   Read
                 </Link>

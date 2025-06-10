@@ -11,17 +11,40 @@
 /* apply Tailwind's 'dark:' selector for specific themes */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+/* dark/light mode variables */
 @theme {
-  --color-white: #fff;
-  --color-vanilla: #fdf0ec;
-  --color-navy: #314964;
+  --color-background: oklch(100% 0 0);
+  --color-content: oklch(21% 0.006 285.885);
 
-  /* --font-display: cursive; */
-  --text-base: 1.125rem;
+  --color-primary: oklch(0.14 0.005 285.823);
+  --color-primary-content: oklch(0.92 0.004 286.32);
+
+  --color-secondary: #fdf0ec; /* vanilla */
+
+  --border-color: oklch(92.8% 0.006 264.531);
 }
 
-/* tailwind: change a styles globally */
 @layer base {
+  @variant dark {
+    --color-background: oklch(25.33% 0.016 252.42);
+    --color-content: oklch(97.807% 0.029 256.847);
+
+    --color-primary: oklch(0.92 0.004 286.32);
+    --color-primary-content: oklch(0.14 0.005 285.823);
+
+    --color-secondary: #374151;
+
+    --border-color: oklch(44.6% 0.03 256.802);
+  }
+}
+
+/* base rules*/
+@layer base {
+  :root {
+    background-color: var(--color-background);
+    color: var(--color-content);
+  }
+
   /* general */
   a {
     @apply hover:underline hover:underline-offset-4;
@@ -42,83 +65,60 @@
   small {
     @apply text-sm font-light;
   }
+}
 
-  /* navbar */
-  .navbar-custom {
-    padding: 0.5rem 0 !important;
+/* components */
+@layer components {
+  .btn {
+    @apply px-7 py-3 text-lg font-bold no-underline hover:opacity-80 transition-all duration-300;
+
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
   }
-  .navbar-custom a {
+
+  .badge {
+    @apply px-1 py-0 text-sm border rounded;
+  }
+
+  .card {
+    @apply border shadow p-5 rounded mb-8;
+    border-color: var(--border-color);
+    h2 {
+      @apply text-xl font-semibold;
+    }
+    p {
+      @apply text-lg;
+    }
+  }
+
+  .page-title {
+    background-color: var(--color-secondary);
+  }
+}
+
+@utility header-border-color {
+  border-color: var(--border-color);
+}
+@utility footer-border-color {
+  border-color: var(--border-color);
+}
+
+@utility navbar-custom {
+  padding: 0.5rem 0 !important;
+
+  a {
     @apply text-lg! font-medium hover:no-underline hover:opacity-70 transition-opacity duration-300 hover:bg-transparent!;
   }
-  .navbar-custom a.active {
+  a.active {
     @apply opacity-70;
   }
-
-  .navbar-custom .navbar-start {
-    width: 75% !important;
-  }
 }
 
-/* --------- DAISYUI ----------- */
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
-}
-
-/* customie theme used in this project */
-@plugin "daisyui/theme" {
-  name: "light";
-  default: true;
-}
-@plugin "daisyui/theme" {
-  name: "dark";
-  default: true;
-  --color-neutral: oklch(92% 0.004 286.32);
-  --color-neutral-content: oklch(14% 0.005 285.823);
-}
-
-/* daisyui: change btn primary globally */
-@utility btn {
-  @apply rounded-none px-7 py-7 text-lg shadow-none border-0;
-}
-
-@utility card {
-  @apply mb-8;
-
-  h2 {
-    @apply text-xl font-semibold;
-  }
-  p {
-    @apply text-lg;
-  }
-}
-
-/* daisyui: custom styles for a specific theme */
-[data-theme="light"] {
-  .header-border-color,
-  .footer-border-color {
-    @apply border-gray-200;
-    /* @apply border-vanilla; */
-  }
-
-  #page-title {
-    background-color: var(--color-vanilla);
-  }
-
-  footer #copyright {
+/* remove line-height */
+footer #copyright {
+  @apply leading-none;
+  & > * {
     @apply leading-none;
-  }
-  footer #copyright > * {
-    @apply leading-none;
-  }
-}
-
-[data-theme="dark"] {
-  .header-border-color,
-  .footer-border-color {
-    @apply border-gray-600;
-  }
-  #page-title {
-    background-color: #374151;
   }
 }
 

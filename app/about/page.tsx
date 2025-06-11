@@ -2,11 +2,13 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { parseMdWithMarked } from "@/lib/markdown";
 import Container from "../Container";
-import { getStaticPage } from "@/lib/data";
+import { getPage } from "@/lib/data";
+import StaticPage from "@/interfaces/StaticPage";
 
 export default async function AboutPage() {
-  const page = await getStaticPage("about");
+  const page = await getPage<StaticPage>("about.md");
   if (!page) return notFound();
+
   const html = parseMdWithMarked(page.body);
 
   return (

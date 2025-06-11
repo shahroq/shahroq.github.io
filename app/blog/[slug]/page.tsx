@@ -4,8 +4,9 @@ import { Metadata } from "next";
 import Container from "@/app/Container";
 import Tags from "@/components/Tags";
 import { formatDate } from "@/lib/utils";
-import { getPost, getPosts } from "@/lib/data";
+import { getPage, getPosts } from "@/lib/data";
 import { parseMdWithMarked } from "@/lib/markdown";
+import Post from "@/interfaces/Post";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -14,8 +15,9 @@ interface Props {
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
 
-  const post = await getPost(slug);
+  const post = await getPage<Post>(slug + ".md", "posts");
   if (!post) return notFound();
+
   const html = parseMdWithMarked(post.body);
 
   return (
@@ -66,7 +68,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = (await params).slug;
-  const post = await getPost(slug);
+  const post = await getPage<Post>(slug + ".md", "posts");
 
   return {
     title: post.title,

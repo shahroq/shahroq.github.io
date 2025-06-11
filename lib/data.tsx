@@ -56,7 +56,7 @@ export const getProjects = async function (): Promise<Project[]> {
     return {
       slug,
       id: data.id,
-      categories: data.categories,
+      tags: data.tags,
       title: data.title ?? "",
       description: data.description ?? "",
       image: data.image ?? null,

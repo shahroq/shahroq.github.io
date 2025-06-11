@@ -1,6 +1,6 @@
 ---
 id: 402
-categories: ["ConcreteCMS"]
+tags: ["ConcreteCMS"]
 title: "Pixel 9"
 description: "Responsive multipurpose theme for ConcreteCMS"
 image: "pixel_9.png"

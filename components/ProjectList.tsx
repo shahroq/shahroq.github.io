@@ -1,5 +1,6 @@
 import Project from "@/interfaces/Project";
 import LinkItemIcon from "./LinkItemIcon";
+import Tags from "./Tags";
 
 interface Props {
   projects: Project[];
@@ -8,20 +9,14 @@ interface Props {
 const ProjectList = ({ projects }: Props) => {
   return (
     <ul className="">
-      {projects.map(({ id, categories, title, description, links }) => {
+      {projects.map(({ id, tags, title, description, links }) => {
         // const projectUrl = `/projects/${slug}`;
 
         return (
           <li key={id} className="card">
             <div className="card-body">
               <div className="flex gap-2 flex-row-reverse">
-                {categories.map((category, i) => {
-                  return (
-                    <span key={i} className="badge badge-neutral">
-                      {category}
-                    </span>
-                  );
-                })}
+                {tags && <Tags tags={tags} />}
               </div>
 
               <h2>{title}</h2>

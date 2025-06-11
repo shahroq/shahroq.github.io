@@ -1,5 +1,5 @@
 import LinkItem from "./LinkItem";
-
+/*
 type ProjectCategory =
   | "AI"
   | "React"
@@ -9,6 +9,7 @@ type ProjectCategory =
   | "Concrete5 (Legacy)"
   | "OpenCart"
   | "WordPress";
+*/
 
 export default interface Project {
   // file name
@@ -16,7 +17,7 @@ export default interface Project {
 
   // grey matter
   id: number;
-  categories: ProjectCategory[];
+  tags: string[];
   title: string;
   description: string;
   image: string | null;

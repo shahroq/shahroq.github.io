@@ -1,6 +1,6 @@
 ---
 id: 151
-categories: ["OpenCart"]
+tags: ["OpenCart"]
 title: "Admin Quick Links"
 description: "A simple-to-use quick link provider for OpenCart admin section"
 image: null

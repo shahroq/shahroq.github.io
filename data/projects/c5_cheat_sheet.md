@@ -1,6 +1,6 @@
 ---
 id: 410
-categories: ["ConcreteCMS"]
+tags: ["ConcreteCMS"]
 title: "Concrete CMS Cheat Sheet "
 description: "A collection of ConcreteCMS cheat sheets, based on the V9+ source code."
 image: null

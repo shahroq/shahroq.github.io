@@ -1,6 +1,6 @@
 ---
 id: 401
-categories: ["ConcreteCMS"]
+tags: ["ConcreteCMS"]
 title: "Grid Gallery 2"
 description: "Dynamic jQuery Grid and Lightbox Solution for ConcreteCMS"
 image: "grid_gallery_2.png"

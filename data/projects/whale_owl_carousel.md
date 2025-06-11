@@ -1,6 +1,6 @@
 ---
 id: 304
-categories: ["Concrete5 (Legacy)"]
+tags: ["Concrete5 (Legacy)"]
 title: "Whale Owl Carousel"
 description: "OWL Carousel for concrete5 site."
 image: "whale_owl_carousel.png"

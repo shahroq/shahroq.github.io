@@ -1,6 +1,6 @@
 ---
 id: 201
-categories: ["WordPress"]
+tags: ["WordPress"]
 title: "WordPress Admin CRUD"
 description: "Sample code for adding CRUD for the custom tables in a WordPress admin panel."
 image: null

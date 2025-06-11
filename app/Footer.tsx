@@ -5,11 +5,11 @@ import LinkItemIcon from "@/components/LinkItemIcon";
 function Footer() {
   return (
     <footer>
-      <Container classNames={["py-6 border-t footer-border-color"]}>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-preview-">
+      <Container>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t footer-border-color border-preview-">
           <div id="copyright">
             <h2>{siteName}</h2>
-            <small>
+            <small className="-bg-green-200">
               Made with Next.js. Contribute to this blog at{" "}
               <a target="_blank" href={siteRepoLink}>
                 GitHub

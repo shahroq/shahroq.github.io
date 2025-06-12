@@ -4,15 +4,7 @@ import matter from "gray-matter";
 import Post from "@/lib/types/Post";
 import Project from "@/lib/types/Project";
 import { getFilesInFolder, readFileContent, slugify } from "@/lib/utils";
-
-type SortDirection = "asc" | "desc";
-
-type SortOption<T> = {
-  key: keyof T;
-  direction: SortDirection;
-};
-
-type SortOptions<T> = SortOption<T>[];
+import { SortOptions } from "./types/SortOptions";
 
 export const getPosts = async (
   query: Partial<Post> = { hidden: false },

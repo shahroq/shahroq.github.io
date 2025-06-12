@@ -16,7 +16,7 @@ export const getPosts = async (): Promise<Post[]> => {
     // get file content
     const fileContent = readFileContent(path.join(postDir, filename));
 
-    const { data } = matter(fileContent);
+    const { data, content } = matter(fileContent);
 
     return {
       slug,
@@ -26,7 +26,7 @@ export const getPosts = async (): Promise<Post[]> => {
       published_date: new Date(data.published_date),
       tags: data.tags ?? [],
       hidden: !!data.hidden,
-      body: data.body ?? "",
+      body: content ?? "",
     } as Post;
   });
 
@@ -48,7 +48,7 @@ export const getProjects = async function (): Promise<Project[]> {
     // get file content
     const fileContent = readFileContent(path.join(projectDir, filename));
 
-    const { data } = matter(fileContent);
+    const { data, content } = matter(fileContent);
 
     return {
       slug,
@@ -60,7 +60,7 @@ export const getProjects = async function (): Promise<Project[]> {
       links: data.links ?? [],
       priority: data.priority ?? 1000,
       hidden: !!data.hidden,
-      body: data.body ?? "",
+      body: content ?? "",
     } as Project;
   });
 
@@ -77,10 +77,10 @@ export const getPage = async function <T>(
   const pagePath = path.join("data", subdir, file);
 
   const fileContent = readFileContent(pagePath);
-  const page = matter(fileContent);
+  const { data, content } = matter(fileContent);
 
   return {
-    ...page.data,
-    body: page.content,
+    ...data,
+    body: content,
   } as T;
 };

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { parseMdWithMarked } from "@/lib/markdown";
 import Container from "../Container";
 import { getPage } from "@/lib/data";
-import StaticPage from "@/interfaces/StaticPage";
+import StaticPage from "@/lib/types/StaticPage";
 
 export default async function AboutPage() {
   const page = await getPage<StaticPage>("about.md");

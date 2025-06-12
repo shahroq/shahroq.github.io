@@ -6,7 +6,7 @@ import Tags from "@/components/Tags";
 import { formatDate } from "@/lib/utils";
 import { getPage, getPosts } from "@/lib/data";
 import { parseMdWithMarked } from "@/lib/markdown";
-import Post from "@/interfaces/Post";
+import Post from "@/lib/types/Post";
 
 interface Props {
   params: Promise<{ slug: string }>;

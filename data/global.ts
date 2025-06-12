@@ -1,4 +1,4 @@
-import LinkItem from "@/interfaces/LinkItem";
+import LinkItem from "@/lib/types/LinkItem";
 
 export const siteName = "Shahroq.dev";
 export const siteVersion = "1.1.0";

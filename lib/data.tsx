@@ -1,8 +1,8 @@
 import path from "path";
 import _ from "lodash";
 import matter from "gray-matter";
-import Post from "@/interfaces/Post";
-import Project from "@/interfaces/Project";
+import Post from "@/lib/types/Post";
+import Project from "@/lib/types/Project";
 import { getFilesInFolder, readFileContent, slugify } from "@/lib/utils";
 
 type SortDirection = "asc" | "desc";

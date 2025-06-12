@@ -1,4 +1,4 @@
-import Project from "@/interfaces/Project";
+import Project from "@/lib/types/Project";
 import LinkItemIcon from "./LinkItemIcon";
 import Tags from "./Tags";
 

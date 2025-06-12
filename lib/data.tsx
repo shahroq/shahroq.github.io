@@ -3,7 +3,7 @@ import _ from "lodash";
 import matter from "gray-matter";
 import Post from "@/interfaces/Post";
 import Project from "@/interfaces/Project";
-import { getFilesInFolder, readFileContent } from "@/lib/utils";
+import { getFilesInFolder, readFileContent, slugify } from "@/lib/utils";
 
 export const getPosts = async (): Promise<Post[]> => {
   const postDir = path.join("data", "posts");
@@ -11,8 +11,7 @@ export const getPosts = async (): Promise<Post[]> => {
 
   // get slug and front matter
   let posts = files.map((filename) => {
-    // create slug
-    const slug = filename.replace(".md", "");
+    const slug = slugify(filename);
 
     // get file content
     const fileContent = readFileContent(path.join(postDir, filename));
@@ -44,8 +43,7 @@ export const getProjects = async function (): Promise<Project[]> {
 
   // get slug and front matter
   let projects = files.map((filename) => {
-    // create slug
-    const slug = filename.replace(".md", "");
+    const slug = slugify(filename);
 
     // get file content
     const fileContent = readFileContent(path.join(projectDir, filename));

@@ -64,3 +64,7 @@ export function formatDate(published_date: string | Date): string {
     day: "numeric",
   });
 }
+
+export function slugify(filename: string): string {
+  return filename.replace(".md", "");
+}

@@ -5,7 +5,9 @@ import Post from "@/interfaces/Post";
 import Project from "@/interfaces/Project";
 import { getFilesInFolder, readFileContent, slugify } from "@/lib/utils";
 
-export const getPosts = async (): Promise<Post[]> => {
+export const getPosts = async (
+  query: Partial<Post> = { hidden: false }
+): Promise<Post[]> => {
   const postDir = path.join("data", "posts");
   const files = getFilesInFolder(postDir, [".md"]);
 
@@ -31,13 +33,15 @@ export const getPosts = async (): Promise<Post[]> => {
   });
 
   // filter, sort
-  posts = posts.filter((post) => !post.hidden);
+  posts = _.filter(posts, _.matches(query));
   posts = _.orderBy(posts, ["publishDate", "id"], ["desc", "desc"]);
 
   return posts;
 };
 
-export const getProjects = async function (): Promise<Project[]> {
+export const getProjects = async function (
+  query: Partial<Post> = { hidden: false }
+): Promise<Project[]> {
   const projectDir = path.join("data", "projects");
   const files = getFilesInFolder(projectDir, [".md"]);
 
@@ -64,7 +68,7 @@ export const getProjects = async function (): Promise<Project[]> {
     } as Project;
   });
 
-  projects = projects.filter((project) => !project.hidden);
+  projects = _.filter(projects, _.matches(query));
   projects = _.orderBy(projects, ["priority", "id"], ["asc", "desc"]);
 
   return projects;

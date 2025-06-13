@@ -9,7 +9,8 @@ import path from "path";
  */
 export const getFilesInFolder = (
   folderPath: string,
-  extensions?: string[]
+  extensions?: string[],
+  withFullPath: boolean = true
 ): string[] => {
   const absolutePath = path.resolve(folderPath);
 
@@ -33,7 +34,9 @@ export const getFilesInFolder = (
     return true; // No extension filter provided
   });
 
-  return files;
+  return withFullPath
+    ? files.map((file) => path.join(absolutePath, file))
+    : files;
 };
 
 /**

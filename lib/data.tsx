@@ -19,10 +19,7 @@ export const getPosts = async (
   // get slug and front matter
   let posts = files.map((filename) => {
     const slug = slugify(filename);
-
-    // get file content
-    const fileContent = readFileContent(path.join(postDir, filename));
-
+    const fileContent = readFileContent(filename);
     const { data, content } = matter(fileContent);
 
     return {
@@ -61,9 +58,7 @@ export const getProjects = async function (
   // get slug and front matter
   let projects = files.map((filename) => {
     const slug = slugify(filename);
-
-    // get file content
-    const fileContent = readFileContent(path.join(projectDir, filename));
+    const fileContent = readFileContent(filename);
 
     const { data, content } = matter(fileContent);
 

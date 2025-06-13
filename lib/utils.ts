@@ -65,6 +65,12 @@ export function formatDate(published_date: string | Date): string {
   });
 }
 
+/**
+ * Converts a file path to a slug by removing the .md extension and path.
+ *
+ * @param filename - File name or path (e.g., 'posts/my-post.md').
+ * @returns Slugified file name without extension (e.g., 'my-post').
+ */
 export function slugify(filename: string): string {
-  return filename.replace(".md", "");
+  return path.basename(filename, ".md");
 }

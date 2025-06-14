@@ -1,5 +1,12 @@
 import fs from "fs";
+import matter from "gray-matter";
 import path from "path";
+
+interface ParsedMarkdown {
+  slug: string;
+  body: string;
+  [key: string]: any; // allows frontmatter fields of any shape
+}
 
 /**
  * Returns a list of files with specified extensions from a folder.
@@ -53,6 +60,29 @@ export const readFileContent = (filePath: string): string => {
 
   const content = fs.readFileSync(absolutePath, "utf-8");
   return content;
+};
+
+/**
+ * Parses a markdown (.md) file and extracts its frontmatter and content.
+ *
+ * @param filePath - The relative or absolute path to the markdown file.
+ * @returns An object containing:
+ *  - `slug`: The filename without extension, used as a unique identifier.
+ *  - `body`: The raw markdown content (excluding frontmatter).
+ *  - Additional fields defined in the frontmatter (as key-value pairs).
+ */
+export const parseMarkdownContent = (filename: string): ParsedMarkdown => {
+  const slug = slugify(filename);
+
+  const fileContent = readFileContent(filename);
+
+  const { data, content } = matter(fileContent);
+
+  return {
+    slug,
+    ...data,
+    body: content,
+  };
 };
 
 export function formatDate(published_date: string | Date): string {

@@ -3,7 +3,12 @@ import _ from "lodash";
 import matter from "gray-matter";
 import Post from "@/lib/types/Post";
 import Project from "@/lib/types/Project";
-import { getFilesInFolder, readFileContent, slugify } from "@/lib/utils";
+import {
+  getFilesInFolder,
+  parseMarkdownContent,
+  readFileContent,
+  slugify,
+} from "@/lib/utils";
 import { SortOptions } from "./types/SortOptions";
 
 export const getPosts = async (
@@ -86,17 +91,12 @@ export const getProjects = async function (
   return projects;
 };
 
-export const getPage = async function <T>(
-  file: string,
-  subdir: string = ""
-): Promise<T> {
-  const pagePath = path.join("data", subdir, file);
+export const getPage = async function <T>(filePath: string): Promise<T> {
+  const raw = parseMarkdownContent(filePath);
+  return raw as T;
 
-  const fileContent = readFileContent(pagePath);
-  const { data, content } = matter(fileContent);
-
-  return {
-    ...data,
-    body: content,
-  } as T;
+  // return {
+  //   ...data,
+  //   body: content,
+  // } as T;
 };

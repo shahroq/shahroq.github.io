@@ -4,9 +4,12 @@ import { parseMdWithMarked } from "@/lib/markdown";
 import Container from "../Container";
 import { getPage } from "@/lib/data";
 import StaticPage from "@/lib/types/StaticPage";
+import path from "path";
 
 export default async function AboutPage() {
-  const page = await getPage<StaticPage>("about.md");
+  const filePath = path.resolve(path.join("data", "about.md"));
+  const page = await getPage<StaticPage>(filePath);
+
   if (!page) return notFound();
 
   const html = parseMdWithMarked(page.body);

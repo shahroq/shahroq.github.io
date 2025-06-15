@@ -91,9 +91,13 @@ export const getProjects = async function (
   return projects;
 };
 
-export const getPage = async function <T>(filePath: string): Promise<T> {
+export const getPage = async function <T>(
+  filePath: string,
+  mapper: (raw: any) => T
+): Promise<T> {
   const raw = parseMarkdownContent(filePath);
-  return raw as T;
+
+  return mapper(raw);
 
   // return {
   //   ...data,

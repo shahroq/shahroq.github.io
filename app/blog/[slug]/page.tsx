@@ -6,7 +6,7 @@ import Tags from "@/components/Tags";
 import { formatDate } from "@/lib/utils";
 import { getPage, getPosts } from "@/lib/data";
 import { parseMdWithMarked } from "@/lib/markdown";
-import Post from "@/lib/types/Post";
+import Post, { mapToPost } from "@/lib/types/Post";
 import path from "path";
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
   const filePath = path.resolve(path.join("data", "posts", slug + ".md"));
-  const post = await getPage<Post>(filePath);
+  const post = await getPage<Post>(filePath, mapToPost);
 
   if (!post) return notFound();
 
@@ -71,7 +71,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const filePath = path.resolve(path.join("data", "posts", slug + ".md"));
-  const post = await getPage<Post>(filePath);
+  const post = await getPage<Post>(filePath, mapToPost);
 
   return {
     title: post.title,

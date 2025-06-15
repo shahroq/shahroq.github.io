@@ -1,30 +1,38 @@
 import LinkItem from "./LinkItem";
-/*
-type ProjectCategory =
-  | "AI"
-  | "React"
-  | "Next.js"
-  | "Laravel"
-  | "ConcreteCMS"
-  | "Concrete5 (Legacy)"
-  | "OpenCart"
-  | "WordPress";
-*/
+import Tag from "./Tag";
 
 export default interface Project {
-  // file name
-  slug: string | null;
-
   // grey matter
   id: number;
-  tags: string[];
   title: string;
-  description: string;
+  excerpt: string;
+  published_date: Date | null;
   image: string | null;
+  tags: Tag[];
   links: LinkItem[];
+
   priority: number;
   hidden: boolean;
 
   // md body
   body: string;
+
+  // file name
+  slug: string | null;
 }
+
+export const mapToProject = (raw: any): Project => {
+  return {
+    id: raw.id,
+    title: raw.title ?? "",
+    excerpt: raw.excerpt ?? "",
+    published_date: new Date(raw.published_date),
+    image: raw.image ?? null,
+    tags: raw.tags ?? [],
+    links: raw.links ?? [],
+    priority: raw.priority ?? 1000,
+    hidden: !!raw.hidden,
+    body: raw.body ?? "",
+    slug: raw.slug,
+  } as Project;
+};

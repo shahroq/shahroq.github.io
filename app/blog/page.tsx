@@ -1,15 +1,26 @@
 import { Metadata } from "next";
 import Container from "../Container";
 import PostList from "@/components/PostList";
-import { getPosts } from "@/lib/data";
+import { getCollection } from "@/lib/data";
+import Post, { mapToPost } from "@/lib/types/Post";
 
 export default async function BlogPage() {
-  const posts = await getPosts();
+  const collection = await getCollection<Post>(
+    "posts",
+    mapToPost,
+    {
+      hidden: false,
+    },
+    [
+      { key: "published_date", direction: "desc" },
+      { key: "id", direction: "desc" },
+    ]
+  );
 
   return (
     <Container classNames={["my-12", "min-h-[200px]"]}>
       <h1 className="mb-6">Blog</h1>
-      <PostList posts={posts} />
+      <PostList posts={collection} />
     </Container>
   );
 }

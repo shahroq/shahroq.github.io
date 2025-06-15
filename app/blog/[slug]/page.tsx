@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Container from "@/app/Container";
 import Tags from "@/components/Tags";
 import { formatDate } from "@/lib/utils";
-import { getPage, getPosts } from "@/lib/data";
+import { getCollection, getPage } from "@/lib/data";
 import { parseMdWithMarked } from "@/lib/markdown";
 import Post, { mapToPost } from "@/lib/types/Post";
 import path from "path";
@@ -61,7 +61,9 @@ export default async function PostPage({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getPosts();
+  const posts = await getCollection<Post>("posts", mapToPost, {
+    hidden: false,
+  });
 
   return posts.map((post) => ({
     slug: post.slug,

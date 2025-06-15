@@ -5,6 +5,7 @@ import path from "path";
 interface ParsedMarkdown {
   slug: string;
   body: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any; // allows frontmatter fields of any shape
 }
 

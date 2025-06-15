@@ -17,6 +17,7 @@ export default interface Post {
   slug: string | null;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const mapToPost = (raw: any): Post => {
   return {
     id: raw.id,

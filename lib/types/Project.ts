@@ -21,6 +21,7 @@ export default interface Project {
   slug: string | null;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const mapToProject = (raw: any): Project => {
   return {
     id: raw.id,

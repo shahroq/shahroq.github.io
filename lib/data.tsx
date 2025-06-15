@@ -72,7 +72,7 @@ export const getProjects = async function (
       id: data.id,
       tags: data.tags,
       title: data.title ?? "",
-      description: data.description ?? "",
+      excerpt: data.excerpt ?? "",
       image: data.image ?? null,
       links: data.links ?? [],
       priority: data.priority ?? 1000,

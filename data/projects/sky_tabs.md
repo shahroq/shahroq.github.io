@@ -2,7 +2,7 @@
 id: 404
 tags: ["ConcreteCMS"]
 title: "Sky Tabs"
-description: "Clean, responsive solution for creating beautiful tabbed navigation."
+excerpt: "Clean, responsive solution for creating beautiful tabbed navigation."
 image: "sky_tabs.png"
 links:
   [

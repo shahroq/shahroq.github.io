@@ -2,7 +2,7 @@
 id: 301
 tags: ["Concrete5 (Legacy)"]
 title: "Pixel 2"
-description: "Responsive multipurpose theme for Concrete5"
+excerpt: "Responsive multipurpose theme for Concrete5"
 image: "pixel_2.png"
 links:
   [

@@ -2,8 +2,7 @@
 id: 151
 tags: ["OpenCart"]
 title: "Admin Quick Links"
-description: "A simple-to-use quick link provider for OpenCart admin section"
-image: null
+excerpt: "A simple-to-use quick link provider for OpenCart admin section"
 links:
   [
     {

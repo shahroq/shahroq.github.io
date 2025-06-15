@@ -9,7 +9,7 @@ interface Props {
 const ProjectList = ({ projects }: Props) => {
   return (
     <ul className="">
-      {projects.map(({ id, tags, title, description, links }) => {
+      {projects.map(({ id, tags, title, excerpt, links }) => {
         // const projectUrl = `/projects/${slug}`;
 
         return (
@@ -20,7 +20,7 @@ const ProjectList = ({ projects }: Props) => {
               </div>
 
               <h2>{title}</h2>
-              <p>{description}</p>
+              <p>{excerpt}</p>
               <div className="flex gap-2">
                 {links.map((link, i) => {
                   return (

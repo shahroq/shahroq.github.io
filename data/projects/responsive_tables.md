@@ -2,7 +2,7 @@
 id: 403
 tags: ["ConcreteCMS"]
 title: "Responsive Tables"
-description: "Simple table designer that allows you to build fully responsive tables."
+excerpt: "Simple table designer that allows you to build fully responsive tables."
 image: "responsive_tables.png"
 links:
   [

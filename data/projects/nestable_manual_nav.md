@@ -2,7 +2,7 @@
 id: 105
 tags: ["ConcreteCMS"]
 title: "Nestable Manual Nav"
-description: "Manually choose pages & links for your navigation menu in ConcreteCMS"
+excerpt: "Manually choose pages & links for your navigation menu in ConcreteCMS"
 image: "nestable_manual_nav.png"
 links:
   [

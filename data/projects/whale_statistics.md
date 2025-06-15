@@ -2,7 +2,7 @@
 id: 302
 tags: ["Concrete5 (Legacy)"]
 title: "Traffic & Statistics"
-description: "Analytics and statistics for your concrete5 site."
+excerpt: "Analytics and statistics for your concrete5 site."
 image: "whale_statistics.png"
 links:
   [

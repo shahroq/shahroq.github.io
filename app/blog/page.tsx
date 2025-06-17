@@ -18,8 +18,8 @@ export default async function BlogPage() {
   );
 
   return (
-    <Container classNames={["my-12", "min-h-[200px]"]}>
-      <h1 className="mb-6">Blog</h1>
+    <Container classNames={["my-12"]}>
+      <h1>Blog</h1>
       <PostList posts={collection} />
     </Container>
   );

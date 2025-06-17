@@ -19,7 +19,7 @@ export default async function BlogPage() {
 
   return (
     <Container classNames={["my-12"]}>
-      <h1 className="mb-6">Projects</h1>
+      <h1>Projects</h1>
       <ProjectList projects={collection} />
     </Container>
   );

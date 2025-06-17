@@ -16,10 +16,10 @@ export default async function AboutPage() {
   const html = parseMdWithMarked(page.body);
 
   return (
-    <Container classNames={["my-12", "prose lg:prose-lg dark:prose-invert"]}>
+    <Container classNames={["my-12"]}>
       <h1>{page.title}</h1>
       <div
-        className="page-body"
+        className="page-body prose lg:prose-lg dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: html }}
       ></div>
     </Container>

@@ -24,36 +24,32 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <>
+      {/* page title area */}
       <section className="page-title">
         <Container
           classNames={[
             "flex flex-col items-center justify-center text-center lg:px-16 py-12 lg:py-24",
           ]}
         >
-          <h1 className="mb-2">{post.title}</h1>
+          <h1>{post.title}</h1>
           <p>{post.excerpt}</p>
           <Tags tags={post.tags} />
         </Container>
       </section>
 
-      <Container
-        classNames={["my-12", "prose lg:prose-lg dark:prose-invert"]}
-        tag="article"
-      >
+      <Container classNames={["my-12"]} tag="article">
         <div
-          className="post-body"
+          className="post-body prose lg:prose-lg dark:prose-invert mb-4"
           dangerouslySetInnerHTML={{ __html: html }}
         ></div>
 
         <div className="post-footer">
           {post.published_date && (
-            <small className="block">
+            <p className="small">
               Published at: {formatDate(post.published_date)}
-            </small>
+            </p>
           )}
-          <Link href="/blog" className="">
-            Go Back
-          </Link>
+          <Link href="/blog">Go Back</Link>
         </div>
       </Container>
     </>

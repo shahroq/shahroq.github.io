@@ -13,27 +13,30 @@
 
 /* dark/light mode variables */
 @theme {
-  --color-background: oklch(100% 0 0);
-  --color-content: oklch(21% 0.006 285.885);
+  /* typgraphy (from tw typgrapht gray theme) */
+  --color-body: theme("colors.gray.700");
+  --color-headings: theme("colors.gray.900");
+  --color-links: theme("colors.gray.900");
+  --color-bold: theme("colors.gray.900");
 
+  --color-background: oklch(100% 0 0);
   --color-primary: oklch(0.14 0.005 285.823);
   --color-primary-content: oklch(0.92 0.004 286.32);
-
   --color-secondary: #fdf0ec; /* vanilla */
-
   --border-color: oklch(92.8% 0.006 264.531);
 }
 
 @layer base {
   @variant dark {
-    --color-background: oklch(25.33% 0.016 252.42);
-    --color-content: oklch(97.807% 0.029 256.847);
+    --color-body: theme("colors.gray.300");
+    --color-headings: theme("colors.white");
+    --color-links: theme("colors.white");
+    --color-bold: theme("colors.white");
 
+    --color-background: oklch(0.2533 0.016 252.42);
     --color-primary: oklch(0.92 0.004 286.32);
     --color-primary-content: oklch(0.14 0.005 285.823);
-
     --color-secondary: #374151;
-
     --border-color: oklch(44.6% 0.03 256.802);
   }
 }
@@ -42,35 +45,47 @@
 @layer base {
   :root {
     background-color: var(--color-background);
-    color: var(--color-content);
+    color: var(--color-body);
   }
 
   /* general */
+  p {
+    @apply text-lg/normal mb-4;
+  }
+
   a {
+    color: var(--color-link);
     @apply hover:underline hover:underline-offset-4;
   }
 
+  h1,
+  h2,
+  h3 {
+    color: var(--color-headings);
+  }
+
   h1 {
-    @apply text-4xl font-bold;
+    @apply text-3xl/snug font-bold mb-3;
   }
 
   h2 {
-    @apply text-2xl font-semibold;
+    @apply text-2xl/snug font-semibold mb-2;
   }
 
   h3 {
-    @apply text-xl font-semibold;
+    @apply text-xl/normal font-semibold mb-3;
   }
 
-  small {
-    @apply text-sm font-light;
+  small,
+  .small {
+    @apply text-sm/normal font-light mb-2;
   }
 }
 
 /* components */
 @layer components {
   .btn {
-    @apply px-7 py-3 text-lg font-bold no-underline hover:opacity-80 transition-all duration-300;
+    @apply px-7 py-2 text-lg font-bold no-underline hover:opacity-80 transition-all duration-300;
 
     background-color: var(--color-primary);
     color: var(--color-primary-content);
@@ -83,12 +98,6 @@
   .card {
     @apply border shadow p-5 rounded mb-8;
     border-color: var(--border-color);
-    h2 {
-      @apply text-xl font-semibold;
-    }
-    p {
-      @apply text-lg;
-    }
   }
 
   .page-title {
@@ -108,9 +117,10 @@
 
   a {
     @apply text-lg! font-medium hover:no-underline hover:opacity-70 transition-opacity duration-300 hover:bg-transparent!;
-  }
-  a.active {
-    @apply opacity-70;
+
+    &.active {
+      @apply opacity-70;
+    }
   }
 }
 
@@ -118,7 +128,7 @@
 footer #copyright {
   @apply leading-none;
   & > * {
-    @apply leading-none;
+    @apply leading-none mb-0;
   }
 }
 

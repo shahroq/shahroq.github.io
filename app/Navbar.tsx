@@ -53,7 +53,7 @@ const Navbar = () => {
       {/* Logo */}
       <div className="text-2xl font-bold flex space-x-2 items-center">
         <FaSquareFull className="text-sm" />
-        <p>{siteName}</p>
+        <h3 className="mb-0">{siteName}</h3>
       </div>
 
       {/* Links */}

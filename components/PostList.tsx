@@ -21,7 +21,9 @@ const PostList = ({ posts }: Props) => {
                 <Link href={postUrl}>{title}</Link>
               </h2>
               <p>{excerpt}</p>
-              {published_date && <small>{formatDate(published_date)}</small>}
+              {published_date && (
+                <p className="small">{formatDate(published_date)}</p>
+              )}
 
               {tags && <Tags tags={tags} />}
 

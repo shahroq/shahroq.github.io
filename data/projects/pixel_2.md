@@ -14,7 +14,7 @@ links:
     },
     {
       label: "Demo",
-      url: "https://shahroq.github.io/theme_pixel_demo/22",
+      url: "https://shahroq.github.io/theme_pixel_demo/",
       icon: "FaEye",
     },
     {

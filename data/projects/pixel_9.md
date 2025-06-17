@@ -12,7 +12,11 @@ links:
       url: "https://market.concretecms.com/products/pixel-9/2140e37d-cf89-11ee-b9df-0a97d4ce16b9",
       icon: "FaHandPaper",
     },
-    { label: "Demo", url: "http://pixel9.killerwhalesoft.com/", icon: "FaEye" },
+    {
+      label: "Demo",
+      url: "https://shahroq.github.io/theme_pixel9_demo/",
+      icon: "FaEye",
+    },
     {
       label: "Docs",
       url: "https://github.com/shahroq/theme_pixel_docs",

@@ -81,6 +81,10 @@
     @apply text-sm/normal font-light mb-2;
   }
 
+  pre {
+    @apply bg-transparent! p-0! rounded!;
+  }
+
   nav {
     * {
       @apply m-0;

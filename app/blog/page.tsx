@@ -1,8 +1,8 @@
-import { Metadata } from "next";
-import Container from "../Container";
-import PostList from "@/components/PostList";
+import { PostList } from "@/components";
 import { getCollection } from "@/lib/data";
 import Post, { mapToPost } from "@/lib/types/Post";
+import { Metadata } from "next";
+import Container from "../Container";
 
 export default async function BlogPage() {
   const collection = await getCollection<Post>(

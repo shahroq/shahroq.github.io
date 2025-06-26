@@ -1,12 +1,12 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import Container from "@/app/Container";
-import Tags from "@/components/Tags";
-import { formatDate } from "@/lib/utils";
+import { Tags } from "@/components";
 import { getCollection, getPage } from "@/lib/data";
 import { parseMdWithMarked } from "@/lib/markdown";
 import Post, { mapToPost } from "@/lib/types/Post";
+import { formatDate } from "@/lib/utils";
+import { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import path from "path";
 
 interface Props {

@@ -1,10 +1,10 @@
+import { getPage } from "@/lib/data";
+import { parseMdWithMarked } from "@/lib/markdown";
+import StaticPage, { mapToStaticPage } from "@/lib/types/StaticPage";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { parseMdWithMarked } from "@/lib/markdown";
-import Container from "../Container";
-import { getPage } from "@/lib/data";
-import StaticPage, { mapToStaticPage } from "@/lib/types/StaticPage";
 import path from "path";
+import Container from "../Container";
 
 export default async function AboutPage() {
   const slug = "about";

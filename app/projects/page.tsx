@@ -1,8 +1,8 @@
-import { Metadata } from "next";
-import Container from "../Container";
-import ProjectList from "@/components/ProjectList";
+import { ProjectList } from "@/components";
 import { getCollection } from "@/lib/data";
 import Project, { mapToProject } from "@/lib/types/Project";
+import { Metadata } from "next";
+import Container from "../Container";
 
 export default async function BlogPage() {
   const collection = await getCollection<Project>(

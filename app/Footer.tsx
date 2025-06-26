@@ -1,6 +1,6 @@
+import { LinkItemIcon } from "@/components";
 import { siteName, siteRepoLink, socials } from "@/data/global";
 import Container from "./Container";
-import LinkItemIcon from "@/components/LinkItemIcon";
 
 function Footer() {
   return (

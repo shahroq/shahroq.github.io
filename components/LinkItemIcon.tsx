@@ -1,6 +1,6 @@
+import LinkItem from "@/lib/types/LinkItem";
 import Link from "next/link";
 import * as FaIcons from "react-icons/fa";
-import LinkItem from "@/lib/types/LinkItem";
 
 interface Props {
   linkItem: LinkItem;

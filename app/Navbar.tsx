@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { siteName } from "@/data/global";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { siteName } from "@/data/global";
 
 const links = [
   { label: "About", href: "/about" },

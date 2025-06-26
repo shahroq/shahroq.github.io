@@ -1,7 +1,6 @@
+import { Tags } from "@/components";
 import Post from "@/lib/types/Post";
 import { formatDate } from "@/lib/utils";
-import React from "react";
-import Tags from "./Tags";
 import Link from "next/link";
 
 interface Props {

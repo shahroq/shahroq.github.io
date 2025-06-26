@@ -1,6 +1,6 @@
+import { Tags } from "@/components";
 import Project from "@/lib/types/Project";
 import LinkItemIcon from "./LinkItemIcon";
-import Tags from "./Tags";
 
 interface Props {
   projects: Project[];

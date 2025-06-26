@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+import { useEffect, useState } from "react";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 const ThemeSwitcher = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");

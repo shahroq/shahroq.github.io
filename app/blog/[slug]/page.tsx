@@ -2,7 +2,7 @@ import Container from "@/app/Container";
 import { Tags } from "@/components";
 import { getCollection, getPage } from "@/lib/data";
 import { parseMdWithMarked } from "@/lib/markdown";
-import Post, { mapToPost } from "@/lib/types/Post";
+import { Post, mapToPost } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import { Metadata } from "next";
 import Link from "next/link";

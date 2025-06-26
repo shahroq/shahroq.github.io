@@ -1,6 +1,6 @@
 import { ProjectList } from "@/components";
 import { getCollection } from "@/lib/data";
-import Project, { mapToProject } from "@/lib/types/Project";
+import { Project, mapToProject } from "@/lib/types";
 import { Metadata } from "next";
 import Container from "../Container";
 

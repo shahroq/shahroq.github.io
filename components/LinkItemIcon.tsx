@@ -1,4 +1,4 @@
-import LinkItem from "@/lib/types/LinkItem";
+import { LinkItem } from "@/lib/types";
 import Link from "next/link";
 import * as FaIcons from "react-icons/fa";
 

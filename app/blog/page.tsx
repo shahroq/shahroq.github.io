@@ -1,6 +1,6 @@
 import { PostList } from "@/components";
 import { getCollection } from "@/lib/data";
-import Post, { mapToPost } from "@/lib/types/Post";
+import { Post, mapToPost } from "@/lib/types";
 import { Metadata } from "next";
 import Container from "../Container";
 

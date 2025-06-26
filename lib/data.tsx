@@ -1,7 +1,7 @@
 import path from "path";
 import _ from "lodash";
 import { getFilesInFolder, parseMarkdownContent } from "@/lib/utils";
-import { SortOptions } from "./types/SortOptions";
+import { SortOptions } from "./types";
 
 export const getPage = async function <T>(
   filePath: string,

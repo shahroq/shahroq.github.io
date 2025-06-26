@@ -1,6 +1,6 @@
 import { getPage } from "@/lib/data";
 import { parseMdWithMarked } from "@/lib/markdown";
-import StaticPage, { mapToStaticPage } from "@/lib/types/StaticPage";
+import { StaticPage, mapToStaticPage } from "@/lib/types";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import path from "path";

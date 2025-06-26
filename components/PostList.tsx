@@ -1,5 +1,5 @@
 import { Tags } from "@/components";
-import Post from "@/lib/types/Post";
+import { Post } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 

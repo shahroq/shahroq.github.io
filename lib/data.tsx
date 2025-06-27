@@ -5,23 +5,14 @@ import { SortOptions } from "./types";
 
 export const getPage = async function <T>(
   filePath: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  mapper: (raw: any) => T
+  mapper: (raw: unknown) => T
 ): Promise<T> {
-  const raw = parseMarkdownContent(filePath);
-
-  return mapper(raw);
-
-  // return {
-  //   ...data,
-  //   body: content,
-  // } as T;
+  return mapper(parseMarkdownContent(filePath));
 };
 
 export const getCollection = async function <T>(
   subdir: string = "",
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  mapper: (raw: any) => T,
+  mapper: (raw: unknown) => T,
   query: Partial<T> = {},
   sortOptions: SortOptions<T> = []
 ): Promise<T[]> {

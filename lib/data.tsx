@@ -30,16 +30,15 @@ export const getCollection = async function <T>(
 
   // parse md files content
   const rawCollection = files.map(parseMarkdownContent);
-  let collection = rawCollection.map(mapper);
+  const mapped = rawCollection.map(mapper);
 
-  // filter
-  collection = _.filter(collection, _.matches(query));
-
-  // sort
-  collection = _.orderBy(
-    collection,
+  // filter/sort
+  const filtered = _.filter(mapped, _.matches(query));
+  const sorted = _.orderBy(
+    filtered,
     sortOptions.map((option) => option.key),
     sortOptions.map((option) => option.direction)
   );
-  return collection;
+
+  return sorted;
 };

@@ -37,7 +37,7 @@ export default async function PostPage({ params }: Props) {
         </Container>
       </section>
 
-      <Container classNames={["my-12"]} tag="article">
+      <Container classNames={["my-12"]} as="article">
         <div
           className="post-body prose lg:prose-lg dark:prose-invert mb-4"
           dangerouslySetInnerHTML={{ __html: html }}

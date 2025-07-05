@@ -8,19 +8,17 @@ const ThemeSwitcher = () => {
   const [theme, setTheme] = useLocalStorage<"light" | "dark">("theme", "light");
 
   useEffect(() => {
-    setTheme(theme);
     document.documentElement.setAttribute("data-theme", theme);
-  }, [theme, setTheme]);
-
-  const Icon =
-    theme === "light" ? <MdOutlineLightMode /> : <MdOutlineDarkMode />;
+  }, [theme]);
 
   return (
     <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className="text-2xl cursor-pointer"
+      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+      title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
-      {Icon}
+      {theme === "light" ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
     </button>
   );
 };
